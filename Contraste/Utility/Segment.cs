@@ -9,8 +9,8 @@ namespace Utility
 {
 	public class Segment
 	{
-		private Vector2 pointA { get; private set; }
-		private Vector2 pointB { get; private set; }
+		public Vector2 pointA { get; private set; }
+		public Vector2 pointB { get; private set; }
 		private float slope;
 		private float intercept;
 
