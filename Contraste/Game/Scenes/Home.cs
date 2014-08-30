@@ -11,6 +11,8 @@ namespace Contraste {
 			: base(Game.Instance.Width, Game.Instance.Height) {
 			Player player = new Player();
 			Add(player);
+
+			Surface.AddShader(new Shader("Assets/Test.frag"));
 		}
 	}
 }
