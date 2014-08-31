@@ -45,7 +45,11 @@ namespace Contraste {
 
 		public override void Begin() {
 			Game.Surface.AddShader(lightsShader);
-			//Game.Surface.AddShader(pixelateShader);
+			Game.Surface.AddShader(pixelateShader);
+		}
+
+		public override void Update() {
+
 		}
 	}
 }
