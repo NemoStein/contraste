@@ -15,8 +15,6 @@ namespace Contraste {
 		public float SeekingSpeed = 90f;
 		public float AlertSpeed = 80f;
 
-		public int LightRadius = 100;
-
 		public enum States {
 			Patrolling,
 			Seeking,
@@ -52,9 +50,11 @@ namespace Contraste {
 			Collider.OriginX = -Collider.HalfWidth;
 			Collider.OriginY = -Collider.HalfHeight;
 
-			light = new CircleCollider(LightRadius, (int)Tags.Light);
-			light.OriginX = (float)(LightRadius / 2) + Graphic.Width - Collider.HalfWidth;
-			light.OriginY = (float)(LightRadius / 2) + Graphic.Height - Collider.HalfHeight;
+			Radius = 100;
+
+			light = new CircleCollider((int)Radius, (int)Tags.Light);
+			light.OriginX = (Radius / 2) + Graphic.Width - Collider.HalfWidth;
+			light.OriginY = (Radius / 2) + Graphic.Height - Collider.HalfHeight;
 			AddCollider(light);
 
 			Positions = positions;

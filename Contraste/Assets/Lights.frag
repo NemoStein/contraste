@@ -1,5 +1,6 @@
 uniform sampler2D texture;
 
+uniform vec4 spot0 = vec4(0);
 uniform vec4 spot1 = vec4(0);
 uniform vec4 spot2 = vec4(0);
 uniform vec4 spot3 = vec4(0);
@@ -31,14 +32,13 @@ uniform vec4 spot28 = vec4(0);
 uniform vec4 spot29 = vec4(0);
 uniform vec4 spot30 = vec4(0);
 uniform vec4 spot31 = vec4(0);
-uniform vec4 spot32 = vec4(0);
 
 vec4 spots[] = vec4[]
 (
 	spot1,  spot2,  spot3,  spot4,  spot5,  spot6,  spot7,  spot8,
 	spot9,  spot10, spot11, spot12, spot13, spot14, spot15, spot16,
 	spot17, spot18, spot19, spot20, spot21, spot22, spot23, spot24,
-	spot25, spot26, spot27, spot28, spot29, spot30, spot31, spot32
+	spot25, spot26, spot27, spot28, spot29, spot30, spot31, spot0
 );
 
 uniform float light = 0.75;
@@ -46,7 +46,7 @@ uniform float light = 0.75;
 void main(void)
 {
 	vec4 color = texture2D(texture, gl_TexCoord[0].xy);
-	color -= light;
+	color -= 1.0 - light;
 
 	for (int i = 0; i < spots.length(); ++i)
 	{
