@@ -35,10 +35,10 @@ uniform vec4 spot31 = vec4(0);
 
 vec4 spots[] = vec4[]
 (
-	spot1,  spot2,  spot3,  spot4,  spot5,  spot6,  spot7,  spot8,
-	spot9,  spot10, spot11, spot12, spot13, spot14, spot15, spot16,
-	spot17, spot18, spot19, spot20, spot21, spot22, spot23, spot24,
-	spot25, spot26, spot27, spot28, spot29, spot30, spot31, spot0
+	spot0,  spot1,  spot2,  spot3,  spot4,  spot5,  spot6,  spot7, 
+	spot8,  spot9,  spot10, spot11, spot12, spot13, spot14, spot15,
+	spot16, spot17, spot18, spot19, spot20, spot21, spot22, spot23,
+	spot24, spot25, spot26, spot27, spot28, spot29, spot30, spot31
 );
 
 uniform float light = 0.75;
