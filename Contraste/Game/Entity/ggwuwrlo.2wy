@@ -1,0 +1,121 @@
+﻿using Otter;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Contraste {
+	public class Guard : Enemy {
+		#region Public Fields
+		public float PatrollingSpeed = 100f;
+		public float SeekingSpeed = 200f;
+		public float AlertSpeed = 100f;
+
+		public enum States {
+			Patrolling,
+			Seeking,
+			Alert
+		}
+		#endregion
+
+		#region Public Properties
+		public List<LineCollider> rayCasts { get; private set; }
+		#endregion
+
+		float angle;
+		float precision;
+		float range;
+		float step;
+		float spam;
+
+		float lookAt;
+
+		public Guard(Vector2 position)
+			: base(position) {
+			SetGraphic(Image.CreateCircle(20, new Color("CC5555")));
+			SetHitbox(20, 20, (int)Tags.Enemy);
+			Collider.OriginX = -Collider.HalfWidth;
+			Collider.OriginY = -Collider.HalfHeight;
+
+			Heart = new Heart(1);
+			StateMachineCoroutine = new StateMachineCoroutine();
+			Movement = new BasicMovement(0, 0, 0);
+			Movement.Axis = new Axis();
+			Movement.Collider = Collider;
+
+			rayCasts = new List<LineCollider>();
+
+			angle = 60f;
+			precision = 1f;
+			range = 900f;
+			step = Util.DEG_TO_RAD / precision;
+			spam = angle * precision;
+
+			int i = -1;
+			while(++i < spam) {
+				rayCasts.Add(new LineCollider(1, 1, 2, 2));
+				AddCollider(rayCasts[i]);
+			}
+
+			AddComponents(Heart, StateMachineCoroutine, Movement);
+
+			StateMachineCoroutine.Populate<States>();
+			StateMachineCoroutine.ChangeState(States.Patrolling);
+		}
+
+		#region Overrides
+		override public void Update() {
+			int i = -1;
+			while(++i < spam) {
+				rayCasts[i].X = -Collider.OriginX + Collider.HalfWidth;
+				rayCasts[i].Y = -Collider.OriginY + Collider.HalfHeight;
+				rayCasts[i].X2 = (float)Math.Cos(step * i + lookAt) * range + rayCasts[i].X;
+				rayCasts[i].Y2 = (float)Math.Sin(step * i + lookAt) * range + rayCasts[i].Y;
+
+				var c = rayCasts[i].Collide(X, Y, (int)Tags.Solid, (int)Tags.Player);
+				if(c != null && c.Entity is Player) {
+					Console.WriteLine("found you!");
+				}
+			}
+		}
+
+		public override void Render() {
+			foreach(Collider c in Colliders)
+				if(c != null)
+					c.Render();
+		}
+		#endregion
+
+		#region Coroutines
+		private IEnumerator Rotate() {
+			float target = Util.WrapAngle(lookAt + 180) - spam / 2 * Util.DEG_TO_RAD;
+			while(lookAt != target) {
+				lookAt = Util.Approach(lookAt, target, Util.RAD_TO_DEG);
+				yield return 0;
+			}
+		}
+		#endregion
+
+		#region States
+		public IEnumerator Patrolling() {
+			Movement.Speed.Max = Movement.Accel = PatrollingSpeed;
+			while(true) {
+				yield return Rotate();
+				yield return StateMachineCoroutine.WaitForFrames(25);
+			}
+		}
+
+		public IEnumerator Seeking() {
+			Movement.Speed.Max = Movement.Accel = SeekingSpeed;
+			yield return 0;
+		}
+
+		public IEnumerator Alert() {
+			Movement.Speed.Max = Movement.Accel = AlertSpeed;
+			yield return 0;
+		}
+		#endregion
+	}
+}

@@ -14,7 +14,7 @@ namespace Contraste {
 		#endregion
 
 		#region Public Fields
-		public bool AutoLayer;
+		public bool AutoLayer = true;
 		#endregion
 
 		#region Constructor
