@@ -47,20 +47,29 @@
     <Compile Include="Game\Entity\Player.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Game\Scenes\Home.cs" />
+    <Compile Include="Game\Scenes\ShaderTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Util.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Pixelate.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="App.config" />
+    <Content Include="Assets\Ry.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Lights.frag">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Otter\Otter\Otter.csproj">
+    <ProjectReference Include="..\..\..\External\Otter\Otter\Otter.csproj">
       <Project>{236485c2-a7ba-4dcd-808a-b3a634764402}</Project>
       <Name>Otter</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
