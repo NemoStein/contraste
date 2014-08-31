@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <OgmoVersion>1.0</OgmoVersion>
+  <OgmoVersion>2.1.0.6</OgmoVersion>
   <Name>Contraste</Name>
   <BackgroundColor A="255" R="125" G="160" B="255" />
   <GridColor A="255" R="255" G="240" B="90" />
@@ -13,10 +13,10 @@
     <Height>600</Height>
   </LevelMinimumSize>
   <LevelMaximumSize>
-    <Width>1600</Width>
-    <Height>1200</Height>
+    <Width>4000</Width>
+    <Height>4000</Height>
   </LevelMaximumSize>
-  <Filename>C:\Users\Toth\Desktop\Toth\melon lord\Mono\Contraste\Contraste\Assets\Ogmo\Contraste.oep</Filename>
+  <Filename>D:\Workspaces\C#\Games\Contraste\Contraste\Assets\Ogmo\Contraste.oep</Filename>
   <AngleMode>Radians</AngleMode>
   <CameraEnabled>false</CameraEnabled>
   <CameraSize>
@@ -65,7 +65,10 @@
       <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
         <RectColor A="255" R="204" G="85" B="85" />
       </ImageDefinition>
-      <ValueDefinitions />
+      <ValueDefinitions>
+        <ValueDefinition xsi:type="IntValueDefinition" Name="Radius" Default="100" Min="0" Max="100" ShowSlider="false" />
+        <ValueDefinition xsi:type="FloatValueDefinition" Name="Intensity" Default="0.3" Min="0" Max="100" Round="0.1" />
+      </ValueDefinitions>
       <NodesDefinition Enabled="true" Limit="-1" DrawMode="Path" Ghost="false" />
     </EntityDefinition>
     <EntityDefinition Name="Light" Limit="-1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
@@ -82,7 +85,38 @@
       </ImageDefinition>
       <ValueDefinitions>
         <ValueDefinition xsi:type="IntValueDefinition" Name="Radius" Default="120" Min="0" Max="400" ShowSlider="false" />
+        <ValueDefinition xsi:type="FloatValueDefinition" Name="Intensity" Default="0.4" Min="0" Max="100" Round="0.1" />
       </ValueDefinitions>
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="Start" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>40</Width>
+        <Height>40</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
+        <RectColor A="255" R="0" G="128" B="255" />
+      </ImageDefinition>
+      <ValueDefinitions />
+      <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
+    </EntityDefinition>
+    <EntityDefinition Name="Exit" Limit="1" ResizableX="false" ResizableY="false" Rotatable="false" RotateIncrement="15">
+      <Size>
+        <Width>40</Width>
+        <Height>40</Height>
+      </Size>
+      <Origin>
+        <X>0</X>
+        <Y>0</Y>
+      </Origin>
+      <ImageDefinition DrawMode="Rectangle" ImagePath="" Tiled="false">
+        <RectColor A="255" R="0" G="64" B="128" />
+      </ImageDefinition>
+      <ValueDefinitions />
       <NodesDefinition Enabled="false" Limit="-1" DrawMode="None" Ghost="false" />
     </EntityDefinition>
   </EntityDefinitions>
