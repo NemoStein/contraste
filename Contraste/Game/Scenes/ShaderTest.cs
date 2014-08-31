@@ -21,12 +21,7 @@ namespace Contraste {
 		{
 			AddGraphic(new Image("Assets/Ry.png"));
 
-			lightsShader = new Shader("Assets/Lights.frag");
-			pixelateShader = new Shader("Assets/Pixelate.frag");
-
-			Game.Surface.AddShader(lightsShader);
-			Game.Surface.AddShader(pixelateShader);
-
+			
 			//lightsShader.SetParameter("spot1", 100f, 500f, 50f, 1.0f);
 			//lightsShader.SetParameter("spot2", 200f, 200f, 100f, 1.0f);
 			//lightsShader.SetParameter("spot3", 300f, 500f, 50f, 1.0f);
@@ -35,22 +30,25 @@ namespace Contraste {
 
 		public override void Update()
 		{
-			lightsShader.SetParameter("light", (float)Math.Sin(Timer / 100));
-			lightsShader.SetParameter("spot" + Rand.Int(1, 32), Rand.Float(800f), Rand.Float(600f), Rand.Float(100f), Rand.Float(0.5f, 1.5f));
-
-			/*
+			
 			if (Timer % 30 == 0)
 			{
 				try
 				{
-					
+					//lightsShader = new Shader("Assets/Lights.frag");
+					pixelateShader = new Shader("Assets/Pixelate.frag");
+
+					//Game.Surface.AddShader(lightsShader);
+					Game.Surface.Shader = pixelateShader;
+
+					//lightsShader.SetParameter("light", (float)Math.Sin(Timer / 100));
+					//lightsShader.SetParameter("spot" + Rand.Int(1, 32), Rand.Float(800f), Rand.Float(600f), Rand.Float(100f), Rand.Float(0.5f, 1.5f));
 				}
 				catch (Exception exception)
 				{
-
+					Console.WriteLine("Bugo!" + Timer);
 				}
 			}
-			*/
 		}
 	}
 }
