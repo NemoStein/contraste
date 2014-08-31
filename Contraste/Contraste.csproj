@@ -47,6 +47,7 @@
     <Compile Include="Game\Entity\Enemy.cs" />
     <Compile Include="Game\Entity\Guard.cs" />
     <Compile Include="Game\Entity\Light.cs" />
+    <Compile Include="Game\Entity\LightEmitter.cs" />
     <Compile Include="Game\Entity\Player.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Game\Scenes\Home.cs" />

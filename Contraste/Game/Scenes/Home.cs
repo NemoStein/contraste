@@ -12,6 +12,8 @@ namespace Contraste {
 		Shader lightsShader;
 		Shader pixelateShader;
 
+		List<LightEmitter> spots;
+
 		public Home()
 			: base(Game.Instance.Width, Game.Instance.Height) {
 			Global.Player = new Player();
@@ -44,12 +46,29 @@ namespace Contraste {
 		}
 
 		public override void Begin() {
-			Game.Surface.AddShader(lightsShader);
-			Game.Surface.AddShader(pixelateShader);
+
+
 		}
+
+		private bool ready;
 
 		public override void Update() {
 
+			if(!ready) {
+				ready = true;
+
+				AddGraphic(new Image("Assets/Ry.png"));
+
+				Game.Surface.AddShader(lightsShader);
+				Game.Surface.AddShader(pixelateShader);
+
+				spots = GetEntities<LightEmitter>();
+			}
+
+			for(var i = 0; i < spots.Count; ++i) {
+				var spot = spots[i];
+				lightsShader.SetParameter("spot" + i, spot.X, 600 - spot.Y, spot.Radius, spot.Intensity);
+			}
 		}
 	}
 }

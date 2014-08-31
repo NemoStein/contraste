@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Tests;
 
 namespace Contraste {
-	public class Enemy : Actor {
+	public class Enemy : LightEmitter {
 		
 		#region Public Properties
 		public SearchNode PathNode { get; protected set; }
