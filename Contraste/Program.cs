@@ -11,7 +11,7 @@ namespace Contraste {
 			Game game = new Game("Contraste", 800, 600, 60);
 			game.SetWindow(800, 600);
 			game.LockAspectRatio = true;
-			game.Color = new Color("B8C76F");
+			game.Color = new Color("252525");
 			game.MouseVisible = true;
 
 			Global.Session = Game.Instance.AddSession("p1");
@@ -23,6 +23,7 @@ namespace Contraste {
 			Global.Session.Controller.Left.AddKey(Key.A);
 
 			Global.Session.Controller.AxisLeft.AddKeys(Key.W, Key.D, Key.S, Key.A);
+			Global.Session.Controller.A.AddKey(Key.Z);
 
 			game.Start(new Home());
 		}

@@ -44,10 +44,18 @@
     <Compile Include="Game\Components\Heart.cs" />
     <Compile Include="Game\Components\StateMachineCoroutine.cs" />
     <Compile Include="Game\Entity\Actor.cs" />
+    <Compile Include="Game\Entity\Enemy.cs" />
+    <Compile Include="Game\Entity\Guard.cs" />
+    <Compile Include="Game\Entity\Light.cs" />
     <Compile Include="Game\Entity\Player.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="Game\Scenes\Home.cs" />
     <Compile Include="Game\Scenes\ShaderTest.cs" />
+    <Compile Include="Lib\BreadCrumb.cs" />
+    <Compile Include="Lib\MinHeap.cs" />
+    <Compile Include="Lib\PathFinder.cs" />
+    <Compile Include="Lib\Point3D.cs" />
+    <Compile Include="Lib\World.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\Util.cs" />
@@ -57,19 +65,27 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="App.config" />
+    <Content Include="Assets\Ogmo\0.oel">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="App.config" />
     <Content Include="Assets\Ry.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Assets\Lights.frag">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Ogmo\Contraste.oep">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\External\Otter\Otter\Otter.csproj">
+    <ProjectReference Include="..\..\Otter\Otter\Otter.csproj">
       <Project>{236485c2-a7ba-4dcd-808a-b3a634764402}</Project>
       <Name>Otter</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -40,6 +40,8 @@ namespace Contraste {
 
 		#region Constructor
 		public void ChangeState<TState>(TState state) {
+			if(Current == state.ToString())
+				return;
 			Coroutine.StopAll();
 			Coroutine.Start(states[state.ToString()].Update());
 			Last = Current;
